@@ -1,5 +1,5 @@
 {
-  "name": "draft-js-export-html",
+  "name": "draft-js-export-markup",
   "version": "0.2.2",
   "description": "DraftJS: Export ContentState to HTML",
   "main": "lib/main.js",

@@ -67,11 +67,11 @@ const DATA_TO_ATTR = {
 
 // Map style to HTML tag
 const INLINE_STYLE_TO_TAG = {
-    [BOLD]: 'strong',
-    [CODE]: 'code',
-    [ITALIC]: 'em',
-    [STRIKETHROUGH]: 'del',
-    [UNDERLINE]: 'ins',
+  [BOLD]: 'strong',
+  [CODE]: 'code',
+  [ITALIC]: 'em',
+  [STRIKETHROUGH]: 'del',
+  [UNDERLINE]: 'ins',
 };
 
 // The reason this returns an array is because a single block might get wrapped
@@ -249,17 +249,17 @@ class MarkupGenerator {
     let entityPieces = getEntityRanges(text, charMetaList);
     // Merge core tag map with user provided map
     let tagMap = {
-        ...INLINE_STYLE_TO_TAG,
-        ...inlineTags,
+      ...INLINE_STYLE_TO_TAG,
+      ...inlineTags,
     };
     return entityPieces.map(([entityKey, stylePieces]) => {
       let content = stylePieces.map(([text, style]) => {
         let content = encodeContent(text);
         let styleTypes = Object.keys(tagMap);
         styleTypes.forEach((styleType) => {
-            if (styleType !== CODE && style.has(styleType)) {
-                content = `<${tagMap[styleType]}>${content}</${tagMap[styleType]}>`;
-            }
+          if (styleType !== CODE && style.has(styleType)) {
+            content = `<${tagMap[styleType]}>${content}</${tagMap[styleType]}>`;
+          }
         });
         if (style.has(CODE)) {
           // If our block type is CODE then we are already wrapping the whole
